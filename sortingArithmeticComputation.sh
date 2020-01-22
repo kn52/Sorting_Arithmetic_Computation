@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
-echo "Welcome to Arithemetic Computation"
-
+echo "Enter Three Numbers"
+read a
+read b
+read c
 
