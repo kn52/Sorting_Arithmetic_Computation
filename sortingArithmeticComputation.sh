@@ -5,5 +5,7 @@ read a
 read b
 read c
 
-echo "$(($a + $b * $c))"
+echo "Arithmetic Operation 1: $(($a + $b * $c))"
+
+echo "Arithmetic Operation 2: $(($a * $b + $c))"
 
