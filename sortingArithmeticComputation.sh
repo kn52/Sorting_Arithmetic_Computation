@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+declare -a arithmeticArr
+declare -A arithmeticDict
 echo "Enter Three Numbers"
 read a
 read b
@@ -24,6 +26,13 @@ arithmeticDict[res3]=$res3
 arithmeticDict[res4]=$res4
 
 echo "Arithmetic Dictionary: ${arithmeticDict[@]}"
+
+k=0
+for i in ${!arithmeticDict[@]}
+do
+	arithmeticArr[$k]=${arithmeticDict[$i]}
+	((k++))
+done
 
 
 
