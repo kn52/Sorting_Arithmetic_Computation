@@ -9,6 +9,8 @@ echo "Arithmetic Operation1: $(($a + $b * $c))"
 
 echo "Arithmetic Operation2: $(($a * $b + $c))"
 
+echo "Arithmetic Operation3: $(($c * $a / $b ))"
+
 
 
 
