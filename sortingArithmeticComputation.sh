@@ -49,6 +49,9 @@ done
 printf "Array in Descending Order: " 
 echo "${arithmeticArr[@]}"
 
+printf "Array in Ascending Order: "
+echo "${arithmeticArr[@]}" | rev
+
 
 
 
