@@ -13,7 +13,7 @@ echo "Arithmetic Operation2: $(($a * $b + $c))"
 
 echo "Arithmetic Operation3: $(($c * $a / $b ))"
 
-echo "Arithmetic Operation2: $(($a % $b + $c))"
+echo "Arithmetic Operation4: $(($a % $b + $c))"
 
 res1=$(($a + $b * $c))
 res2=$(($a * $b + $c))
@@ -33,6 +33,21 @@ do
 	arithmeticArr[$k]=${arithmeticDict[$i]}
 	((k++))
 done
+
+for((i=1;i<4;i++))
+do
+	temp=${arithmeticArr[i]}
+	j=$((i - 1))
+	while (( ((j >= 0 ))   &&  $temp > ${arithmeticArr[j]} ))
+	do
+		arithmeticArr[j + 1]=${arithmeticArr[j]}
+		j=$((j - 1));
+	done
+	arithmeticArr[(( j + 1 ))]=$temp
+done
+
+printf "Array in Descending Order: " 
+echo "${arithmeticArr[@]}"
 
 
 
