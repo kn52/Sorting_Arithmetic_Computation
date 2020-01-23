@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 declare -a arithmeticArr
 declare -A arithmeticDict
@@ -11,15 +11,15 @@ echo "Arithmetic Operation1: $(($a + $b * $c))"
 
 echo "Arithmetic Operation2: $(($a * $b + $c))"
 
-echo "Arithmetic Operation3: $(($c + $a / $b))"
+echo "Arithmetic Operation3: $( echo "scale=1; $c + $a / $b" | bc)"
 
 echo "Arithmetic Operation4: $(($a % $b + $c))"
 
 res1=$(($a + $b * $c))
 res2=$(($a * $b + $c))
-res3=$(($c + $a / $b))
+res3=$( echo "scale=1; $c + $a / $b" | bc)
 res4=$(($a % $b + $c))
-arithmeticDict[res1]=$res1
+arithmeticDict[res1]=$res1 
 arithmeticDict[res2]=$res2
 arithmeticDict[res3]=$res3
 arithmeticDict[res4]=$res4
@@ -37,6 +37,8 @@ done
 
 echo "${arithmeticArr[@]}"
 
+var=`echo "$res3" | awk '{printf("%d\n",$1+0.5);}'`
+arithmeticArr[2]=$var
 
 for((i=1;i<${#arithmeticArr[@]};i++))
 do
@@ -49,6 +51,15 @@ do
 	done
 	arithmeticArr[$(( j + 1 ))]=$temp
 done
+
+for ((i=0;i<${#arithmeticArr[@]};i++ ))
+do
+	if (( ${arithmeticArr[$i]} == $var ))
+	then
+		arithmeticArr[$i]=$res3
+	fi 
+done
+
 
 
 printf "Array in Descending Order: " 
